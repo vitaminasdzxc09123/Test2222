@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 
 import styles from './styles';
@@ -24,7 +24,7 @@ export default function FilmAdd({updateData}) {
   const Add = () => {
     axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/v1/movies',
+      url: 'http://10.0.2.2:8000/api/v1/movies',
       headers: {
         Authorization: token,
       },

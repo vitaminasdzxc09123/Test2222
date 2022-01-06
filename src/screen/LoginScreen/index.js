@@ -3,7 +3,7 @@ import {Text, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles';
 import axios from 'axios';
 
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 
 import {useDispatch} from 'react-redux';
 import {setToken} from '../../redux/action';
@@ -17,14 +17,14 @@ export default function LoginScreen({navigation}) {
   async function sendCred() {
     axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/v1/sessions',
-
+      url: 'http://10.0.2.2:8000/api/v1/sessions',
       data: {
         email: email,
         password: password,
       },
     }).then(response => {
-      AsyncStorage.setItem('token', response.data.token);
+      console.log(response);
+      // AsyncStorage.setItem('token', response.data.token);
       dispatch(setToken(response.data.token));
       navigation.replace('HomeSecond');
     });

@@ -32,10 +32,9 @@ export default function HomeScreen({navigation}) {
 
   const fetchData = () => {
     axios
-      .get('http://localhost:8000/api/v1/movies', {
+      .get('http://10.0.2.2:8000/api/v1/movies', {
         headers: {
-          Authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwZXRyb0BnbWFpbC5jb20iLCJuYW1lIjoiUGV0cm92IFBldHJvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMS0wM1QxOToyMDoyMy4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMS0wM1QxOToyMDoyMy4wMDBaIiwiaWF0IjoxNjQxMzc4MjM5fQ.VYfZSVTqEmaLmrBAGZqKcPs143DL1lK7RzDmnfy-WjU',
+          Authorization: token,
         },
       })
       .then(response => {
@@ -49,11 +48,12 @@ export default function HomeScreen({navigation}) {
   const removeMovie = id => {
     axios({
       method: 'DELETE',
-      url: `http://localhost:8000/api/v1/movies/${id}`,
+      url: `http://10.0.2.2:8000/api/v1/movies/${id}`,
       headers: {
         Authorization: token,
       },
-    }).then(() => {
+    }).then(response => {
+      console.log(response);
       dispatch(deleteMovie(id));
     });
   };
@@ -61,7 +61,7 @@ export default function HomeScreen({navigation}) {
   const getInfo = id => {
     axios({
       method: 'GET',
-      url: `http://localhost:8000/api/v1/movies/${id}`,
+      url: `http://10.0.2.2:8000/api/v1/movies/${id}`,
       headers: {
         Authorization: token,
       },

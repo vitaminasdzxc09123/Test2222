@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Text, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 import {useDispatch} from 'react-redux';
 import {setToken} from '../../redux/action';
 
@@ -16,7 +16,7 @@ export default function RegistryScreen({navigation}) {
   async function sendCred() {
     const response = await axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/v1/users',
+      url: 'http://10.0.2.2:8000/api/v1/users',
 
       data: {
         email: email,
@@ -25,7 +25,7 @@ export default function RegistryScreen({navigation}) {
         confirmPassword: confirmPassword,
       },
     });
-    AsyncStorage.setItem('token', response.data.token);
+    // AsyncStorage.setItem('token', response.data.token);
     dispatch(setToken(response.data.token));
     navigation.replace('HomeSecond');
   }

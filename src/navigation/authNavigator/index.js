@@ -18,7 +18,7 @@ function StacNavigation() {
         screenOptions={{
           headerShown: false,
         }}>
-        {token != null ? (
+        {token == null ? (
           <Stack.Screen name="Home" component={HomeScreen} />
         ) : (
           <Stack.Screen name="All" component={allNavigators} />
