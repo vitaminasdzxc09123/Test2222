@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     borderColor: '#8C324C',
   },
   AddView: {
-    marginTop: 85,
+    marginTop: 35,
     marginLeft: 10,
     width: 40,
     height: 40,
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     borderColor: '#308745',
   },
   ExitButton: {
-    position: 'absolute',
-    marginTop: 85,
+    marginTop: 30,
+    alignSelf: 'center',
     marginLeft: 5,
     width: 40,
     height: 40,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginLeft: 30,
     width: 300,
-    marginTop: 25,
+    marginTop: 35,
     position: 'absolute',
     backgroundColor: '#CECECE',
     borderRadius: 20,

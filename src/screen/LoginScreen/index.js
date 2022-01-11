@@ -17,14 +17,13 @@ export default function LoginScreen({navigation}) {
   async function sendCred() {
     axios({
       method: 'POST',
-      url: 'http://10.0.2.2:8000/api/v1/sessions',
+      url: 'http://localhost:8000/api/v1/sessions',
       data: {
         email: email,
         password: password,
       },
     }).then(response => {
       console.log(response);
-      // AsyncStorage.setItem('token', response.data.token);
       dispatch(setToken(response.data.token));
       navigation.replace('HomeSecond');
     });

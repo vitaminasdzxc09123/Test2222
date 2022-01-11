@@ -24,7 +24,7 @@ export default function FilmAdd({updateData}) {
   const Add = () => {
     axios({
       method: 'POST',
-      url: 'http://10.0.2.2:8000/api/v1/movies',
+      url: 'http://localhost:8000/api/v1/movies',
       headers: {
         Authorization: token,
       },

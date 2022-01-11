@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Text, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
 import axios from 'axios';
-// import AsyncStorage from '@react-native-community/async-storage';
 import {useDispatch} from 'react-redux';
 import {setToken} from '../../redux/action';
 
@@ -13,21 +12,22 @@ export default function RegistryScreen({navigation}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const dispatch = useDispatch();
-  async function sendCred() {
-    const response = await axios({
-      method: 'POST',
-      url: 'http://10.0.2.2:8000/api/v1/users',
 
+  function sendCred() {
+    axios({
+      method: 'POST',
+      url: 'http://localhost:8000/api/v1/users',
       data: {
         email: email,
         name: name,
         password: password,
         confirmPassword: confirmPassword,
       },
+    }).then(response => {
+      dispatch(setToken(response.data.token));
+      navigation.replace('HomeSecond');
+      x;
     });
-    // AsyncStorage.setItem('token', response.data.token);
-    dispatch(setToken(response.data.token));
-    navigation.replace('HomeSecond');
   }
 
   return (
