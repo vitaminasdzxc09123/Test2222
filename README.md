@@ -6,11 +6,11 @@
 4. npm install
 
 /ios
-cd ios
-pod install
-cd ..
-npx react-native run-ios
+1. cd ios
+2. pod install
+3. cd ..
+4. npx react-native run-ios
 
 /android 
-
-npx react-native run-android
+1. Run emulator on Android Studio
+2. npx react-native run-android
