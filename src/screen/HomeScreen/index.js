@@ -32,7 +32,7 @@ export default function HomeScreen({navigation}) {
 
   const fetchData = () => {
     axios
-      .get('http://localhost:8000/api/v1/movies', {
+      .get('http://10.0.2.2:8000/api/v1/movies', {
         headers: {
           Authorization: token,
         },
@@ -48,7 +48,7 @@ export default function HomeScreen({navigation}) {
   const removeMovie = id => {
     axios({
       method: 'DELETE',
-      url: `http://localhost:8000/api/v1/movies/${id}`,
+      url: `http://10.0.2.2:8000/api/v1/movies/${id}`,
       headers: {
         Authorization: token,
       },
@@ -61,7 +61,7 @@ export default function HomeScreen({navigation}) {
   const getInfo = id => {
     axios({
       method: 'GET',
-      url: `http://localhost:8000/api/v1/movies/${id}`,
+      url: `http://10.0.2.2:8000/api/v1/movies/${id}`,
       headers: {
         Authorization: token,
       },
