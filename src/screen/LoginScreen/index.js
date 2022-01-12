@@ -37,14 +37,12 @@ export default function LoginScreen({navigation}) {
         onChangeText={setEmail}
         value={email}
         placeholder="email"
-        keyboardType="numeric"
       />
 
       <TextInput
         style={styles.TextPassword}
         value={password}
         placeholder="Password"
-        keyboardType="numeric"
         onChangeText={setPassword}
       />
 
