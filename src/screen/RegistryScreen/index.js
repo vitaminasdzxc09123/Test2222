@@ -16,18 +16,22 @@ export default function RegistryScreen({navigation}) {
   function sendCred() {
     axios({
       method: 'POST',
-      url: 'http://10.0.2.2:8000/api/v1/users',
+      url: 'http://192.168.0.106:8000/api/v1/users',
       data: {
         email: email,
         name: name,
         password: password,
         confirmPassword: confirmPassword,
       },
-    }).then(response => {
-      dispatch(setToken(response.data.token));
-      navigation.replace('HomeSecond');
-      x;
-    });
+    })
+      .catch(error => {
+        alert(error);
+      })
+      .then(response => {
+        dispatch(setToken(response.data.token));
+        navigation.replace('HomeSecond');
+        x;
+      });
   }
 
   return (

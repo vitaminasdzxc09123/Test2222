@@ -17,16 +17,20 @@ export default function LoginScreen({navigation}) {
   async function sendCred() {
     axios({
       method: 'POST',
-      url: 'http://10.0.2.2:8000/api/v1/sessions',
+      url: 'http://192.168.0.106:8000/api/v1/sessions',
       data: {
         email: email,
         password: password,
       },
-    }).then(response => {
-      console.log(response);
-      dispatch(setToken(response.data.token));
-      navigation.replace('HomeSecond');
-    });
+    })
+      .catch(error => {
+        alert(error);
+      })
+      .then(response => {
+        console.log(response);
+        dispatch(setToken(response.data.token));
+        navigation.replace('HomeSecond');
+      });
   }
 
   return (
