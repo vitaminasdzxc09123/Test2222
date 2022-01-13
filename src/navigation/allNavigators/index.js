@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import RegistryScreen from '../../screen/RegistryScreen';
+import RegistryScreen from '../../screen/auth/RegistryScreen';
 import HomeScreen from '../../screen/HomeScreen';
-import LoginScreen from '../../screen/LoginScreen';
+import LoginScreen from '../../screen/auth/LoginScreen';
 import {useDispatch, useSelector} from 'react-redux';
 import {setToken} from '../../redux/action';
-// import AsyncStorage from '@react-native-community/async-storage';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,8 +15,6 @@ export default function allNavigators() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = await AsyncStorage.getItem('token');
-
       if (token) {
         dispatch(setToken(token));
       }

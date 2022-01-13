@@ -24,7 +24,7 @@ export default function FilmAdd({updateData}) {
   const Add = () => {
     axios({
       method: 'POST',
-      url: 'http://192.168.0.106:8000/api/v1/movies',
+      url: 'http://10.0.2.2:8000/api/v1/movies',
       headers: {
         Authorization: token,
       },
@@ -46,7 +46,7 @@ export default function FilmAdd({updateData}) {
           ,
         ]);
       }
-      console.log('1222222222211111', response.data.error);
+      // console.log('1222222222211111', response.data.error);
     });
   };
 

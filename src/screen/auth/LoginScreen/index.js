@@ -6,7 +6,7 @@ import axios from 'axios';
 // import AsyncStorage from '@react-native-community/async-storage';
 
 import {useDispatch} from 'react-redux';
-import {setToken} from '../../redux/action';
+import {setToken} from '../../../redux/action';
 
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
@@ -17,20 +17,19 @@ export default function LoginScreen({navigation}) {
   async function sendCred() {
     axios({
       method: 'POST',
-      url: 'http://192.168.0.106:8000/api/v1/sessions',
+      url: 'http://10.0.2.2:8000/api/v1/sessions',
       data: {
         email: email,
         password: password,
       },
-    })
-      .catch(error => {
-        alert(error);
-      })
-      .then(response => {
-        console.log(response);
+    }).then(response => {
+      if (response.data.token) {
         dispatch(setToken(response.data.token));
         navigation.replace('HomeSecond');
-      });
+      } else {
+        alert(response.data.error.code);
+      }
+    });
   }
 
   return (

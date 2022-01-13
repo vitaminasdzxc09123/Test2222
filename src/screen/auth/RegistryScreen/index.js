@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, SafeAreaView, TouchableOpacity, TextInput} from 'react-native';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
-import {setToken} from '../../redux/action';
+import {setToken} from '../../../redux/action';
 
 import styles from './styles';
 
@@ -16,22 +16,21 @@ export default function RegistryScreen({navigation}) {
   function sendCred() {
     axios({
       method: 'POST',
-      url: 'http://192.168.0.106:8000/api/v1/users',
+      url: 'http://10.0.2.2:8000/api/v1/users',
       data: {
         email: email,
         name: name,
         password: password,
         confirmPassword: confirmPassword,
       },
-    })
-      .catch(error => {
-        alert(error);
-      })
-      .then(response => {
+    }).then(response => {
+      if (response.data.token) {
         dispatch(setToken(response.data.token));
         navigation.replace('HomeSecond');
-        x;
-      });
+      } else {
+        alert(response.data.error.code);
+      }
+    });
   }
 
   return (
